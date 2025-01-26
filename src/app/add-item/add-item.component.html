@@ -1,0 +1,19 @@
+<div class="item-container">
+  <button mat-raised-button color="primary" (click)="addItem($event)">
+    Add Item
+  </button>
+
+  <div *ngFor="let item of items; let i = index" class="item-field" [ngClass]="{'done': item.done}">
+    <mat-form-field class="item-input">
+      <input matInput [(ngModel)]="item.value" (ngModelChange)="onInputChange()"/>
+    </mat-form-field>
+    <button mat-icon-button color="primary" (click)="toggleDone(i)" class="checkbox-class" matTooltip="Mark as {{ item.done ? 'not done' : 'done' }}">
+      <mat-icon>{{ item.done ? 'check_box' : 'check_box_outline_blank' }}</mat-icon>
+    </button>
+    <button mat-icon-button color="warn" (click)="deleteItem(i)">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </div>
+
+</div>
+
